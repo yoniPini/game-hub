@@ -24,3 +24,4 @@ git.bat
 *.njsproj
 *.sln
 *.sw?
+.vercel
