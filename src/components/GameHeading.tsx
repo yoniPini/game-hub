@@ -1,15 +1,17 @@
 import { Heading } from "@chakra-ui/react";
-import { BsChevronBarDown } from "react-icons/bs";
+import { GameQuery } from "../App";
 
 interface Props {
-  genre?: string;
-  platform?: string;
+  gameQuery: GameQuery;
 }
 
-const GameHeading = ({ genre, platform }: Props) => {
+const GameHeading = ({ gameQuery }: Props) => {
+  const heading = `${gameQuery.platform?.name || ""} ${
+    gameQuery.genre?.name || ""
+  } Games`;
   return (
     <Heading fontSize={"5xl"} marginY={5} as="h1">
-      {platform || ""} {genre || ""} Games
+      {heading}
     </Heading>
   );
 };
