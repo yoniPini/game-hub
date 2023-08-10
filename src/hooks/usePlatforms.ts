@@ -1,11 +1,15 @@
-import useData from "./useData";
+import platforms from "../data/platforms";
 
 interface Platform {
-    id: number;
-    name: string;
-    slug: string;
+  id: number;
+  name: string;
+  slug: string;
 }
 
-const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
+// quick way to get all platfroms as a static data
+const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });
 
-export default  usePlatforms;
+// the common way to fetch data
+// const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
+
+export default usePlatforms;
