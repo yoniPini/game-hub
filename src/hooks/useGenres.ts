@@ -7,7 +7,7 @@ export interface Genre {
 }
 
 // quick way to get all genres as a static data
-const useGenres = () => ({ data: genres, isLoafin: false, error: null });
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 // the common way to fetch data
 // const useGenres = () => useData<Genre>("/genres");
