@@ -12,19 +12,20 @@ export interface Platform {
 // const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });
 
 // the common way to fetch data
-// const usePlatforms = () => useData<Platform>('/platforms/lists/parents')
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
 
-const usePlatforms = () =>
-  useQuery({
+const usePlatforms = () => {
+  return useQuery({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
-    // apiClient
-    //   .get<FetchResponse<Platform>>("/platforms/lists/parents")
-    //   .then((res) => res.data),
     staleTime: 24 * 60 * 60 * 1000, // 24 hours
-    initialData: { count: platforms.length, results: platforms },
+    initialData: {
+      count: platforms.length,
+      next: null,
+      results: platforms,
+    },
   });
+};
 
 export default usePlatforms;

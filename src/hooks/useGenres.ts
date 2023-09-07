@@ -12,7 +12,6 @@ export interface Genre {
 // const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 // the common way to fetch data
-// const useGenres = () => useData<Genre>("/genres");
 
 const apiClient = new APIClient<Genre>("/genres");
 const useGenres = () => {
