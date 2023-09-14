@@ -3,6 +3,7 @@ import { GameQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
 import { Platform } from "./usePlatforms";
 import axios, { all } from "axios";
+import ms from "ms";
 
 export interface Game {
   id: number;
@@ -43,7 +44,7 @@ const useGames = (gameQuery: GameQuery) =>
           pageSize: 10,
         },
       }),
-    staleTime: 10_000,
+    staleTime: ms("24h"),
     keepPreviousData: true,
     getNextPageParam: (lastPage, allPages) => {
       return lastPage.next ? allPages.length + 1 : undefined;
